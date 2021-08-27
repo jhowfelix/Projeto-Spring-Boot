@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Profile;
 
 import com.esturando.PrimeiroProjeto.entities.Order;
 import com.esturando.PrimeiroProjeto.entities.User;
+import com.esturando.PrimeiroProjeto.entities.enums.OrderStatus;
 import com.esturando.PrimeiroProjeto.repositories.OrderRepository;
 import com.esturando.PrimeiroProjeto.repositories.UserRepository;
 
@@ -32,8 +33,8 @@ public class TestConfig implements CommandLineRunner {
 
 		userRepository.saveAll(Arrays.asList(u1, u2));
 		
-		Order o1 = new Order(null, Instant.parse("2020-08-20T19:53:07Z"), u1);
-		Order o2 = new Order(null, Instant.parse("2020-08-20T19:53:07Z"), u2);
+		Order o1 = new Order(null, Instant.parse("2020-08-20T19:53:07Z"), OrderStatus.PAID,u1);
+		Order o2 = new Order(null, Instant.parse("2020-08-20T19:53:07Z"),OrderStatus.WAITING_PAYMENT,u2);
 	
 		
 		orderRepository.saveAll(Arrays.asList(o1,o2));
