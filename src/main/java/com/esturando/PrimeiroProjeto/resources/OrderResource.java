@@ -13,7 +13,7 @@ import com.esturando.PrimeiroProjeto.entities.Order;
 import com.esturando.PrimeiroProjeto.repositories.OrderRepository;
 
 @RestController
-@RequestMapping(value = "/Order")
+@RequestMapping(value = "/orders")
 public class OrderResource {
 	
 	
