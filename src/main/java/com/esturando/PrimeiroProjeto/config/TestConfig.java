@@ -37,9 +37,8 @@ public class TestConfig implements CommandLineRunner {
 	private ProductRepository productRepository;
 
 	@Autowired
-	private OrderItemRepository orderItemRepository;	
-	
-	
+	private OrderItemRepository orderItemRepository;
+
 	@Override
 	public void run(String... args) throws Exception {
 		User u1 = new User(null, "Maria Brown", "maria@gmail.com", "988888888", "123456");
@@ -57,11 +56,10 @@ public class TestConfig implements CommandLineRunner {
 		Product p1 = new Product(null, "mouse", "usar pc", 200.00, "Top");
 		p1.getCategories().add(c1);
 		productRepository.saveAll(Arrays.asList(p1));
-		
+
 		OrderItem oi1 = new OrderItem(o1, p1, 2, p1.getPrice());
-		
+
 		orderItemRepository.saveAll(Arrays.asList(oi1));
-		
 
 	}
 
