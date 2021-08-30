@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.esturando.PrimeiroProjeto.entities.Category;
 import com.esturando.PrimeiroProjeto.entities.Order;
+import com.esturando.PrimeiroProjeto.entities.OrderItem;
 import com.esturando.PrimeiroProjeto.entities.Product;
 import com.esturando.PrimeiroProjeto.entities.User;
 import com.esturando.PrimeiroProjeto.entities.enums.OrderStatus;
 import com.esturando.PrimeiroProjeto.repositories.CategoryRepository;
+import com.esturando.PrimeiroProjeto.repositories.OrderItemRepository;
 import com.esturando.PrimeiroProjeto.repositories.OrderRepository;
 import com.esturando.PrimeiroProjeto.repositories.ProductRepository;
 import com.esturando.PrimeiroProjeto.repositories.UserRepository;
@@ -34,6 +36,10 @@ public class TestConfig implements CommandLineRunner {
 	@Autowired
 	private ProductRepository productRepository;
 
+	@Autowired
+	private OrderItemRepository orderItemRepository;	
+	
+	
 	@Override
 	public void run(String... args) throws Exception {
 		User u1 = new User(null, "Maria Brown", "maria@gmail.com", "988888888", "123456");
@@ -51,6 +57,10 @@ public class TestConfig implements CommandLineRunner {
 		Product p1 = new Product(null, "mouse", "usar pc", 200.00, "Top");
 		p1.getCategories().add(c1);
 		productRepository.saveAll(Arrays.asList(p1));
+		
+		OrderItem oi1 = new OrderItem(o1, p1, 2, p1.getPrice());
+		
+		orderItemRepository.saveAll(Arrays.asList(oi1));
 		
 
 	}
