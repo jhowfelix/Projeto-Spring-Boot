@@ -15,16 +15,15 @@ import com.esturando.PrimeiroProjeto.repositories.OrderRepository;
 @RestController
 @RequestMapping(value = "/orders")
 public class OrderResource {
-	
-	
+
 	@Autowired
 	private OrderRepository repository;
-	
-	
+
 	@GetMapping
-	public List<Order> findAll(){
+	public List<Order> findAll() {
 		return repository.findAll();
 	}
+
 	@GetMapping(value = "/{Id}")
 	public Order findById(@PathVariable Long Id) {
 		Optional<Order> obj = repository.findById(Id);

@@ -15,21 +15,19 @@ import com.esturando.PrimeiroProjeto.repositories.CategoryRepository;
 @RestController
 @RequestMapping(value = "/category")
 public class CategoryResource {
-	
-	
+
 	@Autowired
 	private CategoryRepository repository;
-	
+
 	@GetMapping
-	public List<Category> findAll(){
+	public List<Category> findAll() {
 		return repository.findAll();
 	}
-	
+
 	@GetMapping(value = "/{Id}")
 	public Category findById(@PathVariable Long Id) {
 		Optional<Category> obj = repository.findById(Id);
 		return obj.get();
 	}
-	
 
 }
