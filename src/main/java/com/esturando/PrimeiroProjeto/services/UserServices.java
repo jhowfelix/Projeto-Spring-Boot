@@ -3,6 +3,8 @@ package com.esturando.PrimeiroProjeto.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -33,9 +35,13 @@ public class UserServices {
 	}
 
 	public User update(Long id, User user) {
-		User usuario = repository.getOne(id);
-		updateDate(usuario, user);
-		return repository.save(usuario);
+		try {
+			User usuario = repository.getOne(id);
+			updateDate(usuario, user);
+			return repository.save(usuario);
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(id);
+		}
 
 	}
 
