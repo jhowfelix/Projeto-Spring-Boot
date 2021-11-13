@@ -28,10 +28,20 @@ public class UserServices {
 		return repository.save(user);
 	}
 	
-	public User update(User user) {
-		return repository.save(user);
+	public User update(Long id, User user) {
+		User usuario = repository.getOne(id);
+		updateDate(usuario, user);
+		return repository.save(usuario);
+		
 	}
 	
+	private void updateDate(User usuario, User user) {
+		usuario.setName(user.getName());
+		usuario.setEmail(user.getEmail());
+		usuario.setPhone(user.getPhone());
+		
+	}
+
 	public void delete(Long id) {
 		repository.deleteById(id);
 	}
